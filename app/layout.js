@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Zimo Ecommerce',
-  description: 'Zimo Group commerce website',
+  description: 'Zimo Group commerce',
 }
 
 export default function RootLayout({ children }) {

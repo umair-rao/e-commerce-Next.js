@@ -22,7 +22,8 @@ const HomePage = () => {
           <img className='w-32 h-32' src={item.image} alt='Product_Image' />
           <h1>Product: {item.title.slice(0, 40)}</h1>
           <h1>Rating: {item.rating.rate}</h1>
-          <h1>Price: {item.price * item.quantity} $</h1>
+
+          <h1>Price: {item.price} $</h1>
           <div className='flex items-center'>
             <h1 className='pr-4'>Quantity:</h1>
             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-3 rounded-l' onClick={() => decrementQunaity(item)}>-</button>
