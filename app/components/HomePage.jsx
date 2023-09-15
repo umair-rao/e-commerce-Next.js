@@ -2,6 +2,7 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductDetail } from "../Redux/actions";
+import { useEffect } from "react";
 
 
 const HomePage = () => {
@@ -11,24 +12,28 @@ const HomePage = () => {
     const dispatch = useDispatch();
 
     const fetchProducts = () => {
-        dispatch(fetchProductDetail())
+        
     }
+
+    useEffect(() => {
+        dispatch(fetchProductDetail())
+    }, [])
+    
   return (
     <div>
-      <button onClick={() => fetchProducts()}>Fetch Prodcuts</button>
-      <div>
+      <div className="grid grid-cols-4 bg-red-200 w-screen">
         {product.products.productDetail.map((item, index) => (
-        <div className='flex flex-col items-center pt-10 space-y-2' key={index}>
+        <div className='flex flex-col items-center pt-10 pb-2.5 space-y-2 border-2 border-current' key={index}>
           <img className='w-32 h-32' src={item.image} alt='Product_Image' />
-          <h1>Product: {item.title.slice(0, 40)}</h1>
+          <h1>Product: {item.title.slice(0, 20)}</h1>
           <h1>Rating: {item.rating.rate}</h1>
 
           <h1>Price: {item.price} $</h1>
-          <div className='flex items-center'>
+          <div className='flex items-center'> w-screen
             <h1 className='pr-4'>Quantity:</h1>
-            <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-3 rounded-l' onClick={() => decrementQunaity(item)}>-</button>
+            <button className='bg-orange-400 hover:bg-gray-400 text-gray-800 font-bold px-3 rounded-l' onClick={() => decrementQunaity(item)}>-</button>
             <p className='pr-3 pl-3'>{item.quantity}</p>
-            <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-2 rounded-l' onClick={() => incrementQunaity(item)}>+</button>
+            <button className='bg-orange-400 hover:bg-gray-400 text-gray-800 font-bold px-2 rounded-l' onClick={() => incrementQunaity(item)}>+</button>
           </div>
         </div>
       ))}
