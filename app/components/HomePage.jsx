@@ -13,9 +13,7 @@ const HomePage = () => {
     const product = useSelector((state) => state.products);
     const dispatch = useDispatch();
 
-    const [count, setCount] = useState(0)
     const [message, setMessage] = useState('');
-    // console.log(count)
 
     useEffect(() => {
         dispatch(fetchProductDetail())

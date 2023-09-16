@@ -3,11 +3,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { decrement, increment, deleteProduct } from "../Redux/addToCartActionReducer";
 import Link from "next/link";
+import { useState } from "react";
 
 
 const Cart = () => {
     const cartTotalItems = useSelector((state) => state.cartItems.cartItems);
-    console.log(cartTotalItems);
+    const [message, setMessage] = useState('');
 
     const disptach = useDispatch();
 
@@ -23,9 +24,26 @@ const Cart = () => {
       disptach(deleteProduct(product))
     }
 
+    const checkoutMessage = () => {
+      setMessage('Order Placed'); 
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
+    }
+
   return (
     <div>
-      <Link href='/' className="bg-red-200 pl-14">Back to Homepage</Link>
+      <div className="flex justify-between">
+        <div className="bg-red-200 pl-14">
+        <Link href='/'>Back to Homepage</Link>
+        </div>
+        <div className="text-4xl bg-orange-300">
+          <p>{message}</p>
+        </div>
+        <div className="pr-14 bg-green-300">
+      <button onClick={() => checkoutMessage()}>Checkout / Place Order</button>
+        </div>
+      </div>
  {cartTotalItems.map((item, index) => (
         <div className='flex flex-col items-center pt-10 space-y-2' key={index}>
           <img className='w-32 h-32' src={item.image} alt='Product_Image' />
