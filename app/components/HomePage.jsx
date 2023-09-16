@@ -27,7 +27,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar count={count} message={message} />
+      <Navbar message={message} />
       <div className="grid grid-cols-4 bg-red-200 w-screen">
         {product.products.productDetail.map((item, index) => (
           <div
