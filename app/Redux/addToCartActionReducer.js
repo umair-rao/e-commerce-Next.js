@@ -32,6 +32,12 @@ export const increment = (product, id) => {
   };
 };
 
+export const setCartItemsEmpty = () => {
+  return {
+    type: 'SET_CART_ITEMS_EMPTY',
+  };
+};
+
 const initialState = { cartItems: [] };
 
 const cartReducer = (state = initialState, action) => {
@@ -108,6 +114,12 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           cartItems: state.cartItems.filter((product) => product.id !== action.payload.id),
         };
+
+        case 'SET_CART_ITEMS_EMPTY':
+      return {
+        ...state,
+        cartItems: [],
+      };
 
     default:
       return state;

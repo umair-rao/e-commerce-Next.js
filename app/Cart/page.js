@@ -5,6 +5,7 @@ import {
   decrement,
   increment,
   deleteProduct,
+  setCartItemsEmpty
 } from "../Redux/addToCartActionReducer";
 import Link from "next/link";
 import { useState } from "react";
@@ -28,14 +29,15 @@ const Cart = () => {
   };
 
   const checkoutMessage = () => {
+    disptach(setCartItemsEmpty())
     setMessage("Order Placed");
     setTimeout(() => {
       setMessage("");
-    }, 3000);
+    }, 3000); 
   };
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="flex justify-between">
         <div className="bg-red-200 pl-14">
           <Link href="/">Back to Homepage</Link>
