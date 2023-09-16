@@ -5,6 +5,13 @@ export const addToCart = (product) => {
   };
 };
 
+export const deleteProduct = (product) => {
+  return {
+    type: "DELETE_PRODUCT",
+    payload: product,
+  };
+};
+
 export const decrement = (product, id) => {
   return {
     type: "DECREMENT",
@@ -95,6 +102,12 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartItems: increaseCartItems.filter((item) => item.quantity > 0),
       };
+
+      case 'DELETE_PRODUCT':
+        return {
+          ...state,
+          cartItems: state.cartItems.filter((product) => product.id !== action.payload.id),
+        };
 
     default:
       return state;

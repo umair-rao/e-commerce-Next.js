@@ -9,7 +9,7 @@ const Navbar = (props) => {
       {<p>{props.message}</p>}
         </div>
       <div className="products">
-      <Link href='/Cart'>Click to view Cart Item [{props.count}]</Link>
+      <Link href='/Cart'>Click to view Cart Item</Link>
       </div>
     </div>
   );

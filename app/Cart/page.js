@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux"
-import { decrement, increment } from "../Redux/addToCartActionReducer";
+import { decrement, increment, deleteProduct } from "../Redux/addToCartActionReducer";
 import Link from "next/link";
 
 
@@ -19,6 +19,9 @@ const Cart = () => {
       disptach(increment(item, item.id))
     }
 
+    const deleteItem = (product) => {
+      disptach(deleteProduct(product))
+    }
 
   return (
     <div>
@@ -34,6 +37,9 @@ const Cart = () => {
             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-3 rounded-l' onClick={() => decrementQunaity(item)}>-</button>
             <p className='pr-3 pl-3'>{item.quantity}</p>
             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold px-2 rounded-l' onClick={() => incrementQunaity(item)}>+</button>
+          </div>
+          <div>
+            <button className="bg-red-400 rounded-md" onClick={() => deleteItem(item)}>Delete Product from Cart</button>
           </div>
         </div>
       ))}

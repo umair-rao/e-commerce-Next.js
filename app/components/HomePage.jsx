@@ -27,14 +27,9 @@ const HomePage = () => {
       setMessage('Product is added to cart'); 
       setTimeout(() => {
         setMessage('');
-      }, 1500);
+      }, 1000);
     }
 
-    const whenclick = (item) => {
-      handleClick(item)
-      setCount(count+1)
-    }
-    
   return (
     <div>
       <Navbar count={count} message={message}/>
@@ -44,7 +39,7 @@ const HomePage = () => {
          <div className="image w-72 px-14 pt-10">
         <img className='w-40 h-32' src={item.image} alt="Product_image"></img>
         <h3>{item.title.slice(0, 20)}</h3>
-        <img className='cursor-pointer' src='/images/addCart.png' onClick={() => whenclick(item)} alt='add_toCart_image'></img>
+        <img className='cursor-pointer' src='/images/addCart.png' onClick={() => handleClick(item)} alt='add_toCart_image'></img>
         </div>
         </div>
       ))}
