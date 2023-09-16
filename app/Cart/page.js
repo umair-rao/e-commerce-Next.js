@@ -1,13 +1,28 @@
 "use client";
 
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { decrement, increment } from "../Redux/addToCartActionReducer";
+import Link from "next/link";
 
 
 const Cart = () => {
     const cartTotalItems = useSelector((state) => state.cartItems.cartItems);
     console.log(cartTotalItems);
+
+    const disptach = useDispatch();
+
+    const decrementQunaity = (item) => {
+      disptach(decrement(item, item.id))
+    }
+
+    const incrementQunaity = (item) => {
+      disptach(increment(item, item.id))
+    }
+
+
   return (
     <div>
+      <Link href='/' className="bg-red-200 pl-14">Back to Homepage</Link>
  {cartTotalItems.map((item, index) => (
         <div className='flex flex-col items-center pt-10 space-y-2' key={index}>
           <img className='w-32 h-32' src={item.image} alt='Product_Image' />

@@ -1,16 +1,20 @@
 "use client";
 
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductDetail } from "../Redux/FetchProductsActionReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { addToCart } from "../Redux/addToCartActionReducer";
+import Navbar from "./Navbar";
 
 
 const HomePage = () => {
 
     const product = useSelector((state) => state.products);
-    console.log(product)
     const dispatch = useDispatch();
+
+    const [count, setCount] = useState(0)
+    // console.log(count)
 
     useEffect(() => {
         dispatch(fetchProductDetail())
@@ -19,6 +23,11 @@ const HomePage = () => {
 
     const handleClick = (product) => {
       dispatch(addToCart(product))
+    }
+
+    const whenclick = (item) => {
+      handleClick(item)
+      setCount(count+1)
     }
     
   return (
@@ -29,11 +38,12 @@ const HomePage = () => {
          <div className="image w-72 px-14 pt-10">
         <img className='w-40 h-32' src={item.image} alt="Product_image"></img>
         <h3>{item.title.slice(0, 20)}</h3>
-        <img className='cursor-pointer' src='/images/addCart.png' onClick={() => handleClick(item)} alt='add_toCart_image'></img>
+        <img className='cursor-pointer' src='/images/addCart.png' onClick={() => whenclick(item)} alt='add_toCart_image'></img>
         </div>
         </div>
       ))}
       </div>
+      <Navbar count={count}/>
     </div>
   )
 }
