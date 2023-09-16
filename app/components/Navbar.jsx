@@ -4,14 +4,12 @@ import React from 'react';
 
 const Navbar = (props) => {
   return (
-    <div className="text-xl bg-pink-300 h-12 pt-1.5">
+    <div className="flex justify-end pr-8 text-xl bg-pink-300 h-12 pt-1.5 sticky top-0">
+      <div className="bg-green-300">
+      {<p>{props.message}</p>}
+        </div>
       <div className="products">
-        <ul className="text-right">
-          <li className="mr-6">
-          <Link href='/Cart'>Click to view Cart Item</Link>
-            {/* {console.log(props.count, 'count with umair')} */}
-          </li>
-        </ul>
+      <Link href='/Cart'>Click to view Cart Item [{props.count}]</Link>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main>
       <div>
-        <Navbar/>
+        {/* <Navbar/> */}
         <HomePage/>
       </div>
     </main>

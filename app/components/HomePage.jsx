@@ -14,6 +14,7 @@ const HomePage = () => {
     const dispatch = useDispatch();
 
     const [count, setCount] = useState(0)
+    const [message, setMessage] = useState('');
     // console.log(count)
 
     useEffect(() => {
@@ -23,6 +24,10 @@ const HomePage = () => {
 
     const handleClick = (product) => {
       dispatch(addToCart(product))
+      setMessage('Product is added to cart'); 
+      setTimeout(() => {
+        setMessage('');
+      }, 1500);
     }
 
     const whenclick = (item) => {
@@ -32,6 +37,7 @@ const HomePage = () => {
     
   return (
     <div>
+      <Navbar count={count} message={message}/>
       <div className="grid grid-cols-4 bg-red-200 w-screen">
         {product.products.productDetail.map((item, index) => (
         <div className='flex flex-col items-center pt-10 pb-2.5 space-y-2 border-2 border-current' key={index}>
@@ -43,7 +49,6 @@ const HomePage = () => {
         </div>
       ))}
       </div>
-      <Navbar count={count}/>
     </div>
   )
 }
